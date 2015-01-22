@@ -1,0 +1,3 @@
+plsi_radiodj_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: PlsiRadiodjBundle:Default:index }
