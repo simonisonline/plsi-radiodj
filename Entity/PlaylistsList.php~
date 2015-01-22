@@ -1,0 +1,116 @@
+<?php
+
+namespace PlsiRadiodjBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PlaylistsList
+ *
+ * @ORM\Table(name="playlists_list", indexes={@ORM\Index(name="ID", columns={"ID"})})
+ * @ORM\Entity
+ */
+class PlaylistsList
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pID", type="integer", nullable=false)
+     */
+    private $pid;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="sID", type="integer", nullable=false)
+     */
+    private $sid;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="cstart", type="float", precision=11, scale=5, nullable=false)
+     */
+    private $cstart;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="cnext", type="float", precision=11, scale=5, nullable=false)
+     */
+    private $cnext;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="cend", type="float", precision=11, scale=5, nullable=false)
+     */
+    private $cend;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="fin", type="float", precision=11, scale=5, nullable=false)
+     */
+    private $fin;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="fout", type="float", precision=11, scale=5, nullable=false)
+     */
+    private $fout;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="swID", type="integer", nullable=false)
+     */
+    private $swid;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="swplay", type="float", precision=11, scale=5, nullable=false)
+     */
+    private $swplay;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="vtID", type="integer", nullable=false)
+     */
+    private $vtid;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="vtplay", type="float", precision=11, scale=5, nullable=false)
+     */
+    private $vtplay;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="swfirst", type="string", nullable=false)
+     */
+    private $swfirst;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ord", type="integer", nullable=false)
+     */
+    private $ord;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}

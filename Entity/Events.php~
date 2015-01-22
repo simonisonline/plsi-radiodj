@@ -1,0 +1,88 @@
+<?php
+
+namespace PlsiRadiodjBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Events
+ *
+ * @ORM\Table(name="events")
+ * @ORM\Entity
+ */
+class Events
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="type", type="boolean", nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="time", type="string", length=20, nullable=false)
+     */
+    private $time;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=200, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="day", type="string", length=30, nullable=true)
+     */
+    private $day;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hours", type="string", length=100, nullable=true)
+     */
+    private $hours;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="data", type="text", length=65535, nullable=true)
+     */
+    private $data;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="enabled", type="string", nullable=true)
+     */
+    private $enabled;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="catID", type="integer", nullable=false)
+     */
+    private $catid;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}

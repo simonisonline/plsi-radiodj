@@ -1,0 +1,81 @@
+<?php
+
+namespace PlsiRadiodjBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * RotationsList
+ *
+ * @ORM\Table(name="rotations_list")
+ * @ORM\Entity
+ */
+class RotationsList
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pID", type="integer", nullable=false)
+     */
+    private $pid;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="catID", type="integer", nullable=false)
+     */
+    private $catid;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="subID", type="integer", nullable=false)
+     */
+    private $subid;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="genID", type="integer", nullable=false)
+     */
+    private $genid;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="selType", type="integer", nullable=false)
+     */
+    private $seltype;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="sweeper", type="integer", nullable=false)
+     */
+    private $sweeper;
+
+    /**
+     * @var simplearray
+     *
+     * @ORM\Column(name="repeatRule", type="simplearray", nullable=false)
+     */
+    private $repeatrule;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ord", type="integer", nullable=false)
+     */
+    private $ord;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}

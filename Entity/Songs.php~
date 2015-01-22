@@ -1,0 +1,284 @@
+<?php
+
+namespace PlsiRadiodjBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Songs
+ *
+ * @ORM\Table(name="songs", uniqueConstraints={@ORM\UniqueConstraint(name="path", columns={"path"})}, indexes={@ORM\Index(name="title", columns={"title"}), @ORM\Index(name="artist", columns={"artist"}), @ORM\Index(name="date_played", columns={"date_played"}), @ORM\Index(name="artist_played", columns={"artist_played"}), @ORM\Index(name="count_played", columns={"count_played"}), @ORM\Index(name="id_subcat", columns={"id_subcat"})})
+ * @ORM\Entity
+ */
+class Songs
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="path", type="string", length=255, nullable=false)
+     */
+    private $path;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="enabled", type="integer", nullable=false)
+     */
+    private $enabled;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_played", type="datetime", nullable=true)
+     */
+    private $datePlayed;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="artist_played", type="datetime", nullable=true)
+     */
+    private $artistPlayed;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="count_played", type="integer", nullable=false)
+     */
+    private $countPlayed;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="play_limit", type="integer", nullable=false)
+     */
+    private $playLimit;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="limit_action", type="integer", nullable=false)
+     */
+    private $limitAction;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start_date", type="datetime", nullable=true)
+     */
+    private $startDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end_date", type="datetime", nullable=true)
+     */
+    private $endDate;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="song_type", type="boolean", nullable=false)
+     */
+    private $songType;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_subcat", type="integer", nullable=false)
+     */
+    private $idSubcat;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_genre", type="integer", nullable=false)
+     */
+    private $idGenre;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="weight", type="float", precision=5, scale=1, nullable=false)
+     */
+    private $weight;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="duration", type="float", precision=11, scale=5, nullable=false)
+     */
+    private $duration;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cue_times", type="string", length=255, nullable=false)
+     */
+    private $cueTimes;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="precise_cue", type="boolean", nullable=false)
+     */
+    private $preciseCue;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="fade_type", type="boolean", nullable=false)
+     */
+    private $fadeType;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="end_type", type="boolean", nullable=false)
+     */
+    private $endType;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="overlay", type="boolean", nullable=false)
+     */
+    private $overlay;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="artist", type="string", length=255, nullable=false)
+     */
+    private $artist;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="original_artist", type="string", length=255, nullable=false)
+     */
+    private $originalArtist;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="album", type="string", length=255, nullable=false)
+     */
+    private $album;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="composer", type="string", length=255, nullable=false)
+     */
+    private $composer;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="year", type="string", length=4, nullable=false)
+     */
+    private $year;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="track_no", type="smallint", nullable=false)
+     */
+    private $trackNo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="disc_no", type="smallint", nullable=false)
+     */
+    private $discNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="publisher", type="string", length=255, nullable=false)
+     */
+    private $publisher;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="copyright", type="string", length=255, nullable=false)
+     */
+    private $copyright;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="isrc", type="string", length=255, nullable=false)
+     */
+    private $isrc;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="bpm", type="float", precision=11, scale=1, nullable=false)
+     */
+    private $bpm;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comments", type="text", length=65535, nullable=true)
+     */
+    private $comments;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sweepers", type="string", length=250, nullable=true)
+     */
+    private $sweepers;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="album_art", type="string", length=255, nullable=false)
+     */
+    private $albumArt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="buy_link", type="string", length=255, nullable=false)
+     */
+    private $buyLink;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="tdate_played", type="datetime", nullable=true)
+     */
+    private $tdatePlayed;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="tartist_played", type="datetime", nullable=true)
+     */
+    private $tartistPlayed;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}

@@ -1,0 +1,39 @@
+<?php
+
+namespace PlsiRadiodjBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Subcategory
+ *
+ * @ORM\Table(name="subcategory")
+ * @ORM\Entity
+ */
+class Subcategory
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="parentid", type="integer", nullable=false)
+     */
+    private $parentid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}

@@ -1,0 +1,144 @@
+<?php
+
+namespace PlsiRadiodjBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * History
+ *
+ * @ORM\Table(name="history", indexes={@ORM\Index(name="artist", columns={"artist"}), @ORM\Index(name="title", columns={"title"}), @ORM\Index(name="date_played", columns={"date_played"})})
+ * @ORM\Entity
+ */
+class History
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_played", type="datetime", nullable=true)
+     */
+    private $datePlayed;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="song_type", type="boolean", nullable=false)
+     */
+    private $songType;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_subcat", type="integer", nullable=false)
+     */
+    private $idSubcat;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_genre", type="integer", nullable=false)
+     */
+    private $idGenre;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="duration", type="float", precision=11, scale=5, nullable=false)
+     */
+    private $duration;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="artist", type="string", length=255, nullable=false)
+     */
+    private $artist;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="original_artist", type="string", length=255, nullable=false)
+     */
+    private $originalArtist;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="album", type="string", length=255, nullable=false)
+     */
+    private $album;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="composer", type="string", length=255, nullable=false)
+     */
+    private $composer;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="year", type="string", length=4, nullable=false)
+     */
+    private $year;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="track_no", type="smallint", nullable=false)
+     */
+    private $trackNo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="disc_no", type="smallint", nullable=false)
+     */
+    private $discNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="publisher", type="string", length=255, nullable=false)
+     */
+    private $publisher;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="copyright", type="string", length=255, nullable=false)
+     */
+    private $copyright;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="isrc", type="string", length=255, nullable=false)
+     */
+    private $isrc;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="listeners", type="integer", nullable=true)
+     */
+    private $listeners;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}

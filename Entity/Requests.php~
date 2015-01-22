@@ -1,0 +1,67 @@
+<?php
+
+namespace PlsiRadiodjBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Requests
+ *
+ * @ORM\Table(name="requests")
+ * @ORM\Entity
+ */
+class Requests
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="songID", type="integer", nullable=false)
+     */
+    private $songid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255, nullable=false)
+     */
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="userIP", type="string", length=50, nullable=false)
+     */
+    private $userip;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="message", type="text", length=65535, nullable=true)
+     */
+    private $message;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="requested", type="datetime", nullable=false)
+     */
+    private $requested;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="played", type="integer", nullable=false)
+     */
+    private $played;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
