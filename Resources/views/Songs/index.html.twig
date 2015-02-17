@@ -1,0 +1,44 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}PlsiRadiodjBundle:songs:index{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{#    {% form %}#}
+    <div class="count">
+        {{dump(data)}}
+    </div>
+    <table class="table">
+        <tr>
+            {# sorting of properties based on query components #}
+            <th>{{ knp_pagination_sortable(pagination, 'Id', 's.id') }} |</th>
+            <th>artist</th>
+            <th{% if pagination.isSorted('s.Title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 's.title') }}</th>
+        </tr>
+        <tr>
+            <td colspan="3">Totaal: {{ pagination.getTotalItemCount }}</td>
+        </tr>
+        {# table body #}
+        {% for song in pagination %}
+            <tr {% if loop.index is odd %}class="color"{% endif %}>
+                <td>{{ song.id }}</td>
+                <td>{{ song.artist }}</td>
+                <td>
+                    {{ song.title }}<br>
+                    {#                    {{dump(song)}}#}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+    {#{% for song in songs %}
+        id: {{song.id}} | <a href="{{ path('songs_show', {'id': song.id}) }}">{{song.artist|e('html')}} - {{song.title|e('html')}}</a><br>
+    {% endfor %}#}
+    {#    {{dump(data)}}#}
+{% endblock %}

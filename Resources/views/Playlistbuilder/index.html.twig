@@ -1,0 +1,43 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Playlist builder{% endblock %}
+
+{% block body %}
+    {#<div class="col-xs-2 col-md-2">.col-xs-2 .col-md-2</div>
+    <div class="col-xs-10 col-md-10">.col-xs-10 .col-md-10#}
+    {{ form_start(form) }}
+    <div class="form-group col-md-12">
+        {{ form_label(form.search, 'search', {'label_attr': {'class': 'col-md-2 control-label'}}) }}
+        <div class="col-md-10">
+            {{ form_widget(form.search, {'attr': {'class':'form-control'}}) }}
+            {{ form_errors(form.search) }}
+        </div>
+    </div>
+    <div class="form-group col-md-12">
+        <div class="col-md-4">
+            {{ form_widget(form.category, {'attr': {'class':'form-control'}}) }}
+            {{ form_errors(form.category) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_widget(form.subcategory, {'attr': {'class':'form-control'}}) }}
+            {{ form_errors(form.subcategory) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_widget(form.genre, {'attr': {'class':'form-control'}}) }}
+            {{ form_errors(form.genre) }}
+        </div>
+    </div>
+    {{ form_end(form) }}
+    <div class="container-fluid">
+        <div class="row" >
+            <div class="col-md-6" id="searchContent">
+            </div>
+            <div class="col-md-6">
+                <h2>hier de playlist</h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/plsiradiodj/js/scripts.js') }}"></script>
+{% endblock %}

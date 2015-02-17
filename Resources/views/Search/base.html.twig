@@ -1,0 +1,48 @@
+{% if(pagination.getTotalItemCount)%}
+    <div>
+        {{dump(page)}}
+    </div>
+    <table class="table">
+        <thead class="thead">
+            {# sorting of properties based on query components #}
+            <th>
+                {{ knp_pagination_sortable(pagination, 'Id', 's.id') }}
+            </th>
+            <th{% if pagination.isSorted('s.Artist') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Artist', 's.artist') }}
+            </th>
+            <th{% if pagination.isSorted('s.Title') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Title', 's.title') }}
+            </th>
+            <th>duration</th>
+        </thead>
+        {#<tr>
+            <td colspan="4">Totaal: {{ pagination.getTotalItemCount }}</td>
+        </tr>#}
+        {# table body #}
+        <tbody>
+        {% for song in pagination %}
+            <tr {% if loop.index is odd %}class="color"{% endif %} id="draggable" class="ui-widget-content">
+                <td>{{ song.id }}</td>
+                <td>{{ song.artist }}</td>
+                <td>
+                    {{ song.title }}
+                    {#                                    {{dump(song)}}#}
+                </td>
+                <td>{{ song.duration|timedouble }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {# display navigation #}
+        <span class="count" style="display: inline-block; line-height: 34px; padding-left: 0; margin-left: 0; border-radius: 4px;">{{ pagination.getTotalItemCount }}</span>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% else %}
+    <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        No numbers
+    </div>
+{% endif %}
