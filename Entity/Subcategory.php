@@ -1,5 +1,6 @@
 <?php
 
+// * @ORM\Entity
 namespace PlsiRadiodjBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -8,7 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  * Subcategory
  *
  * @ORM\Table(name="subcategory")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PlsiRadiodjBundle\Entity\SubcategoryRepository")
+ * 
  */
 class Subcategory
 {

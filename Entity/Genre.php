@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Genre
  *
  * @ORM\Table(name="genre", indexes={@ORM\Index(name="id", columns={"id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PlsiRadiodjBundle\Entity\GenreRepository")
  */
 class Genre
 {

@@ -85,4 +85,221 @@ class Events
     private $id;
 
 
+
+    /**
+     * Set type
+     *
+     * @param boolean $type
+     * @return Events
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return boolean 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set time
+     *
+     * @param string $time
+     * @return Events
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return string 
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Events
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Events
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set day
+     *
+     * @param string $day
+     * @return Events
+     */
+    public function setDay($day)
+    {
+        $this->day = $day;
+
+        return $this;
+    }
+
+    /**
+     * Get day
+     *
+     * @return string 
+     */
+    public function getDay()
+    {
+        return $this->day;
+    }
+
+    /**
+     * Set hours
+     *
+     * @param string $hours
+     * @return Events
+     */
+    public function setHours($hours)
+    {
+        $this->hours = $hours;
+
+        return $this;
+    }
+
+    /**
+     * Get hours
+     *
+     * @return string 
+     */
+    public function getHours()
+    {
+        return $this->hours;
+    }
+
+    /**
+     * Set data
+     *
+     * @param string $data
+     * @return Events
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+
+        return $this;
+    }
+
+    /**
+     * Get data
+     *
+     * @return string 
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param string $enabled
+     * @return Events
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return string 
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set catid
+     *
+     * @param integer $catid
+     * @return Events
+     */
+    public function setCatid($catid)
+    {
+        $this->catid = $catid;
+
+        return $this;
+    }
+
+    /**
+     * Get catid
+     *
+     * @return integer 
+     */
+    public function getCatid()
+    {
+        return $this->catid;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

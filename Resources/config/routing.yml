@@ -1,3 +1,20 @@
-plsi_radiodj_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: PlsiRadiodjBundle:Default:index }
+#songs
+songs_index:
+    path:     /songs
+    defaults: { _controller: PlsiRadiodjBundle:Songs:index }
+songs_ajax:
+    path:     /ajaxform
+    defaults: { _controller: PlsiRadiodjBundle:Songs:ajaxform }
+    methods:   [GET]
+
+songs_show:
+    path:     songs/{id}
+    defaults: { _controller: PlsiRadiodjBundle:Songs:show }
+
+songs_edit:
+    path:     songs/{id}/edit
+    defaults: { _controller: PlsiRadiodjBundle:Songs:edit }
+
+app:
+    resource: "@PlsiRadiodjBundle/Controller/"
+    type:     annotation

@@ -22,6 +22,9 @@ class PlsiRadiodjExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $container->setParameter('plsi_radiodj.search_limit', $config['search_limit']);
+//        $container->setParameter('plsi_radiodj.songtype.1', $config['songtype']['1']);
+        
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }

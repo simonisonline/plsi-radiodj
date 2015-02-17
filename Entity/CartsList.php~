@@ -50,4 +50,106 @@ class CartsList
     private $id;
 
 
+
+    /**
+     * Set pid
+     *
+     * @param integer $pid
+     * @return CartsList
+     */
+    public function setPid($pid)
+    {
+        $this->pid = $pid;
+
+        return $this;
+    }
+
+    /**
+     * Get pid
+     *
+     * @return integer 
+     */
+    public function getPid()
+    {
+        return $this->pid;
+    }
+
+    /**
+     * Set swid
+     *
+     * @param integer $swid
+     * @return CartsList
+     */
+    public function setSwid($swid)
+    {
+        $this->swid = $swid;
+
+        return $this;
+    }
+
+    /**
+     * Get swid
+     *
+     * @return integer 
+     */
+    public function getSwid()
+    {
+        return $this->swid;
+    }
+
+    /**
+     * Set swbutton
+     *
+     * @param integer $swbutton
+     * @return CartsList
+     */
+    public function setSwbutton($swbutton)
+    {
+        $this->swbutton = $swbutton;
+
+        return $this;
+    }
+
+    /**
+     * Get swbutton
+     *
+     * @return integer 
+     */
+    public function getSwbutton()
+    {
+        return $this->swbutton;
+    }
+
+    /**
+     * Set color
+     *
+     * @param string $color
+     * @return CartsList
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string 
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

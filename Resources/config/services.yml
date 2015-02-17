@@ -2,3 +2,8 @@ services:
 #    plsi_radiodj.example:
 #        class: PlsiRadiodjBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+    app.twig_extension:
+        class: PlsiRadiodjBundle\twig\AppExtension
+        public: false
+        tags:
+            - { name: twig.extension }
