@@ -13,33 +13,48 @@ use Doctrine\ORM\EntityRepository;
 class SongsRepository extends EntityRepository {
 
     public function findAll(){
-        return $this->createQueryBuilder('s');
+        return $this->createQueryBuilder('s')->orderBy('s.artist','ASC');
 //        parent::findAll();
     }
 
     public function findSearch($param){
         return $this->createQueryBuilder('s')
-                        ->where('s.enabled=1 and s.songType=0 and s.title LIKE :title')
-                        ->orWhere('s.artist LIKE :title')
+//                        ->where('s.enabled=1 and s.songType=0 and s.title LIKE :title')
+                        ->where('s.enabled=1 and s.title LIKE :title')
+                        ->orWhere('s.enabled=1 and s.artist LIKE :title')
                         ->setParameter('title', $param . '%')
+                        ->getQuery();
+    }
+    
+    public function findSearchByGerne($search, $subId, $genreID){
+        return $this->createQueryBuilder('s')
+//                        ->where('s.enabled=1 and s.songType=0 and s.idSubcat = :sub and s.idGenre = :idGenre and s.title LIKE :title')
+                        ->where('s.enabled=1 and s.idSubcat = :sub and s.idGenre = :idGenre and s.title LIKE :title')
+                ->orWhere('s.enabled=1 and s.idSubcat = :sub and s.idGenre = :idGenre and s.artist LIKE :title')
+                ->orderBy('s.artist','ASC')
+                        ->setParameter('title', '%' . $search . '%')
+                        ->setParameter('sub', $subId)
+                        ->setParameter('idGenre', $genreID)
                         ->getQuery();
     }
 
     public function findSearchBySub($search, $subId){
         
         return $this->createQueryBuilder('s')
-                        ->where('s.enabled=1 and s.songType=0 and s.idSubcat = :sub and s.title LIKE :title')
-//                        ->orWhere('s.artist LIKE :title')
-//                ->orderBy('s.artist ASC')
-                        ->setParameter('title',  $search . '%')
+//                        ->where('s.enabled=1 and s.songType=0 and s.idSubcat = :sub and s.title LIKE :title')
+                        ->where('s.enabled=1 and s.idSubcat = :sub and s.title LIKE :title')
+                ->orWhere('s.enabled=1 and s.idSubcat = :sub and s.artist LIKE :title')
+                ->orderBy('s.artist','ASC')
+                        ->setParameter('title',  '%' .$search . '%')
                         ->setParameter('sub', $subId)
-//                ->setParameters(array( 1 => $search, 2 => $subId))
                         ->getQuery();
     }
+    
     public function findBySub($subId){
         
         return $this->createQueryBuilder('s')
-                        ->where('s.enabled=1 and s.songType=0 and s.idSubcat = :sub')
+//                        ->where('s.enabled=1 and s.songType=0 and s.idSubcat = :sub')
+                        ->where('s.enabled=1 and s.idSubcat = :sub')
 //                        ->orWhere('s.artist LIKE :title')
 //                ->orderBy('s.artist ASC')
 //                        ->setParameter('title', '%'. $search . '%')

@@ -5,15 +5,16 @@
  */
 $(document).ready(function () {
 
+    $("#Search_search").keyup(function () {
+        var inputs = allInputs();
+        console.log(inputs);
+        reloadNumbers(inputs.Search_subcategory, inputs.Search_search, inputs.Search_genre);
+//        alert("Handler for .keyup() called.");
+    });
+
     $("#Search_category").change(function () {
         var inputs = allInputs();
-//        console.log(inputs);
-        console.log(inputs.Search_search);
-        
-        var number = $(this).val();
-            console.log(number);
         if (inputs.Search_category === '0') {
-//                console.log('geen');
             $("#Search_subcategory option").remove();
             $('#Search_subcategory').append($("<option></option>")
                     .text('all').attr('value', 0));
@@ -35,7 +36,7 @@ $(document).ready(function () {
                             .attr('value', value['id']));
 
                 });
-                reloadNumbers(rdata['allOrder'][0]['id'], inputs.Search_search);
+                reloadNumbers(rdata['allOrder'][0]['id'], inputs.Search_search, inputs.Search_genre);
             }).fail(function () {
                 console.log('fail on change Search_category');
             });
@@ -43,10 +44,11 @@ $(document).ready(function () {
     });
 
     loadDefault();
-
+    
+    // this nog only from url
     $(document).on('click', ".thead th a", function (e) {
         e.preventDefault();
-//        console.log($(this));
+        console.log('click on sorting');
         var url = $(this).attr('href');
         var res = url.split("?")[1];
         var sort = getQueryVariable(res, 'sort');
@@ -64,37 +66,46 @@ $(document).ready(function () {
         }).fail(function () {
             console.log('fail on title,artist klick search numbers');
         });
-
-        console.log(url);
-        console.log(sub);
-//        console.log(res);
-//        console.log(sort);
-//        console.log(direction);
     });
 
     subcategorie();
     gerne();
 });
 
-function reloadNumbers(number, search) {
-//    alert('reload and number ' + number);
-//    console.log(search);
-    $.ajax({
-        type: 'GET',
-        url: 'baseAjax', ///<------do this
-        dataType: "html",
-        data: {sub: number, search:search},
-        cache: false
-    }).done(function (rdata) {
-//                console.log(rdata);
-        $('#searchContent').html(rdata);
-    }).fail(function () {
-        console.log('fail');
-    });
+function reloadNumbers(number, search, genre) {
+//    if (number === '0') {
+//        alert('there is no category selected');
+//    } else {
+        if (genre === '0') {
+            $.ajax({
+                type: 'GET',
+                url: 'baseAjax', ///<------do this
+                dataType: "html",
+                data: {sub: number, search: search},
+                cache: false
+            }).done(function (rdata) {
+                $('#searchContent').html(rdata);
+            }).fail(function () {
+                console.log('fail');
+            });
+            console.log('genre is 0: ' + genre);
+        } else {
+            $.ajax({
+                type: 'GET',
+                url: 'baseAjax', ///<------do this
+                dataType: "html",
+                data: {sub: number, search: search, genre: genre},
+                cache: false
+            }).done(function (rdata) {
+                $('#searchContent').html(rdata);
+            }).fail(function () {
+                console.log('fail');
+            });
+        }
+//    }
 }
 
 function loadDefault() {
-    //      get base search numbers
     $.ajax({
         type: 'GET',
         url: 'baseAjax',
@@ -105,30 +116,25 @@ function loadDefault() {
 //        draggableTable();
         $(document).on("click", ".pagination li a", function () {
             event.preventDefault();
+            var inputs = allInputs();
             var id = $(this).data('id');
-//            var id = $(this).data('id');
-            var url = $(this).attr('href');
-            console.log(url);
-            var res = url.split("?")[1];
-            console.log(res);
-            var sub = getQueryVariable(res, 'sub');
-            console.log(sub);
-            var search = getQueryVariable(res,'search');
-            console.log('search: ' + search);
-            if (sub) {
-//                alert('load sub');
+//            console.log(inputs);
+            if (inputs.Search_subcategor !== 0) {
+                alert('load sub');
                 $.ajax({
                     type: 'GET',
                     url: 'baseAjax', ///<------do this
                     dataType: "html",
-                    data: {sub: sub, page: id, search: search},
+                    data: {sub: inputs.Search_subcategory, page: id,genre: inputs.Search_genre, search: inputs.Search_search},
                     cache: false
                 }).done(function (rdata) {
+                    console.log('load from default!!');
                     $('#searchContent').html(rdata);
                 }).fail(function () {
                     console.log('fail on default load');
                 });
             } else {
+                alert('Error, loading default');
                 $.ajax({
                     type: 'GET',
                     url: 'baseAjax', ///<------do this
@@ -161,42 +167,23 @@ function getQueryVariable(url, variable) {
 }
 
 function subcategorie() {
-    //    click on subcatergorie
     $("#Search_subcategory").change(function () {
-        var number = $(this).val();
         var inputs = allInputs();
-        console.log(inputs.Search_search);
-        reloadNumbers(number, inputs.Search_search);
+        reloadNumbers(inputs.Search_subcategory, inputs.Search_search, inputs.Search_genre);
     });
 }
 function gerne() {
-    //    click on subcatergorie
     $("#Search_genre").change(function () {
-//        var number = $(this).val();
-//        console.log(number);
         var inputs = allInputs();
-//        var $inputs = $('#Search :input');
-//
-//        // not sure if you wanted this, but I thought I'd add it.
-//        // get an associative array of just the values.
-//        var values = {};
-//        $inputs.each(function () {
-//            values[this.name] = $(this).val();
-//        });
-        console.log(inputs);
-//        reloadNumbers(number);
+        reloadNumbers(inputs.Search_subcategory, inputs.Search_search, inputs.Search_genre);
     });
 }
-
+// return all inputs
 function allInputs() {
     var $inputs = $(':input');
-
-    // not sure if you wanted this, but I thought I'd add it.
-    // get an associative array of just the values.
     var values = {};
     $inputs.each(function () {
         values[this.id] = $(this).val();
     });
-//    console.log(values.Search);
     return values;
 }

@@ -18,12 +18,20 @@ class SearchController extends Controller {
         if($request->isXmlHttpRequest()){
             $sub = $request->get('sub');
             $search = $request->get('search');
+            $genre = $request->get('genre');
             $repo = $this->getDoctrine()->getRepository('PlsiRadiodjBundle:Songs');
-            if($sub){
+            if($genre){
+                if($sub === 0){
+                    $sub = 1;
+                }
+                $query = $repo->findSearchByGerne($search, $sub, $genre);
+//                echo 'search: ' . $search . '<br>sub: ' . $sub . '<br>' . 'gerne: ' . $genre . '<br>';
+//                exit('dood');
+            }elseif($sub){
 //                $query = $repo->findBySub($sub);
                 $query = $repo->findSearchBySub($search, $sub);
             }else{
-                $query = $repo->findAll();
+                $query = $repo->findSearch($search);//$repo->findAll();
             }
             $pagination = $this->pag($query, $request->query->get('page', 1));
 
@@ -62,8 +70,7 @@ class SearchController extends Controller {
         $pagination = $paginator->paginate(
                 $query, //get the results here
                 $page, //$request->query->get('page', 1), // page,
-                5
-//                $this->container->getParameter('plsi_radiodj.search_limit') //limit per page
+                $this->container->getParameter('plsi_radiodj.search_limit') //limit per page
         );
         $pagination->setUsedRoute('playlistbuider');
         return $pagination;
